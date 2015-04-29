@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:vuelo xmlns:p="http://www.edreams.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.edreams.com Schema_tipo_derivado.xsd ">
+  <billete p:id="0">
+    <trayecto>
+      <origen>origen</origen>
+      <destino did="">destino</destino>
+      <ida/>
+    </trayecto>
+    <fecha>
+      <salida>2001-01-01</salida>
+      <regreso>2001-01-01</regreso>
+    </fecha>
+    <pasajeros xsi:type="p:tipoPasajeros">
+      <p:jubilados>0</p:jubilados>
+      <niños>0</niños>
+      <bebes>0</bebes>
+    </pasajeros>
+    <p:clase>turista barata</p:clase>
+  </billete>
+</p:vuelo>

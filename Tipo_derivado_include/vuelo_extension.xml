@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ed:vuelo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:ed="http://www.edreams.com"
+	xsi:schemaLocation="http://www.edreams.com Schema_tipo_derivado.xsd ">
+	
+	<billete ed:id="333545000012">
+		<trayecto>
+			<origen>ourense</origen>
+			<destino did="MAD">madrid</destino>
+			<idayvuelta />
+			<!-- ida, vuelta e idayvuelta elementos opcionales pero al menos uno -->
+		</trayecto>
+		<fecha>
+			<salida>2005-10-25</salida>
+			<regreso>2005-10-30</regreso>
+			<!--regreso puede no ser obligatorio -->
+		</fecha>
+		<pasajeros xsi:type="ed:extTipoPasajerosBultos">
+		    <!-- El validador espera un elemento del tipo tipoPasajeros.
+		    Mediante la etiqueta xsi:type indicamos el tipo derivado COMPLEJO de tipoPasajeros
+		    contra el que validar.
+		    Es necesario indicar el espacio de nombres al que pertenece el tipo de dato.
+		    Este procedimiento no es necesario al trabajar con tipos derivados SIMPLES.  -->
+			<adultos>1</adultos>
+			<niños>1</niños>
+			<!-- elemento añadido a la definición de tipoPasajeros -->
+			<bicicleta>1</bicicleta>
+		</pasajeros>
+		
+		<ed:clase>turista</ed:clase>
+		
+		<!-- turista barata, turista, business y primera posibles valores de una enumeración -->
+		
+	</billete>
+</ed:vuelo>

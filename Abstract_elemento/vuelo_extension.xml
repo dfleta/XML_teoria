@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ed:vuelo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:ed="http://www.edreams.com"
+	xsi:schemaLocation="http://www.edreams.com Schema_tipo_derivado.xsd ">
+	
+	<billete ed:id="333545000012">
+		<trayecto>
+			<origen>ourense</origen>
+			<destino did="MAD">madrid</destino>
+			<idayvuelta />
+			<!-- ida, vuelta e idayvuelta elementos opcionales pero al menos uno -->
+		</trayecto>
+		<fecha>
+			<salida>2005-10-25</salida>
+			<regreso>2005-10-30</regreso>
+			<!--regreso puede no ser obligatorio -->
+		</fecha>
+		<pasajeros xsi:type="ed:extTipoPasajeros">
+			<!-- el elemento cabecera y los sustitutos son GLOBALES: prefijo! -->
+			<!-- un elemento abstract debe ser sustituido por alguno de sus sustitutos -->
+
+			<ed:jubilados>9</ed:jubilados>						
+			<niños>1</niños>
+			<bichos>1</bichos>
+		</pasajeros>
+		
+		<ed:clase>turista</ed:clase>
+		
+		<!-- turista barata, turista, business y primera posibles valores de una enumeración -->
+		
+	</billete>
+</ed:vuelo>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:ed="http://www.edreams.com"
+	targetNamespace="http://www.pasajerosAdultos/data.org"
+	xmlns:pass="http://www.pasajerosAdultos/data.org"
+	elementFormDefault="qualified">
+	
+	<xs:import namespace="http://www.edreams.com"
+		schemaLocation="vueloSchema_ns_in_complex.xsd">
+	
+	<!-- El elemento adultos podrá ser sustituido por un grupo de elementos de substitutcion -->
+	
+	<xs:element name="jubilados" type="ed:pasajerosAdultos" substitutionGroup="ed:adultos"/>
+	<xs:element name="estudiantes" type="ed:pasajerosAdultos" substitutionGroup="ed:adultos"/>
+	
+
+	
+</xs:schema>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.pasajerosAdultos/data.org"
+	xmlns:pass="http://www.pasajerosAdultos/data.org"
+	elementFormDefault="qualified">
+	
+	<xs:element name="adultos" type="pass:pasajerosAdultos"></xs:element>
+	<!-- El elemento adultos podrá ser sustituido por un grupo de elementos de substitutcion -->
+	
+	<xs:simpleType name="pasajerosAdultos">
+		<xs:restriction base="xs:integer">
+			<xs:minInclusive value="1"></xs:minInclusive>
+			<xs:maxInclusive value="9"></xs:maxInclusive>
+		</xs:restriction>
+	</xs:simpleType>
+	
+</xs:schema>

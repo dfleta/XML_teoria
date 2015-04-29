@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified"
+	elementFormDefault="unqualified"
+	targetNamespace="http://www.edreams.com"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:ed="http://www.edreams.com">
+
+	<!-- elemento abstract -->
+
+	<xs:element name="adultos" type="ed:pasajerosAdultos" abstract="true"></xs:element>
+
+	<!-- un elemento abstract debe ser sustituido por alguno de sus sustitutos -->
+	
+	<xs:element name="jubilados" type="ed:pasajerosAdultos" substitutionGroup="ed:adultos"/>
+	<xs:element name="estudiantes" type="ed:pasajerosAdultos" substitutionGroup="ed:adultos"/>
+	
+
+
+	<xs:complexType name="tipoPasajeros">
+		<xs:sequence>
+			<xs:element ref="ed:adultos"></xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="niños"
+				type="ed:pasajerosMenores">
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="bebes"
+				type="ed:pasajerosMenores">
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:simpleType name="pasajerosAdultos">
+		<xs:restriction base="xs:integer">
+			<xs:minInclusive value="1"></xs:minInclusive>
+			<xs:maxInclusive value="9"></xs:maxInclusive>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="pasajerosMenores">
+		<xs:restriction base="xs:integer">
+			<xs:pattern value="[0-9]"></xs:pattern>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- tipo derivado: extensión de tipos complejos -->
+
+	<xs:complexType name="extTipoPasajeros">
+		<xs:complexContent>
+			<xs:extension base="ed:tipoPasajeros">
+				<xs:sequence>
+					<xs:element name="bichos" type="xs:integer"></xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+</xs:schema>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://www.aena.es"
+	xmlns:aena="http://www.aena.es"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<!-- Espacio de nombres "aena", que posee un tipo importado por el espacio de nombres "ed".
+	El tipo de dato importado (tipoPasajeros) debe ser un elemento global. -->
+
+	<xs:complexType name="tipoPasajeros">
+		<xs:sequence>
+			<xs:element name="adultos" type="aena:pasajerosAdultos"></xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="niños"
+				type="aena:pasajerosMenores">
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="bebes"
+				type="aena:pasajerosMenores">
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:simpleType name="pasajerosAdultos">
+		<xs:restriction base="xs:integer">
+			<xs:minInclusive value="1"></xs:minInclusive>
+			<xs:maxInclusive value="9"></xs:maxInclusive>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="pasajerosMenores">
+		<xs:restriction base="xs:integer">
+			<xs:pattern value="[0-9]"></xs:pattern>
+		</xs:restriction>
+	</xs:simpleType>
+
+
+</xs:schema>

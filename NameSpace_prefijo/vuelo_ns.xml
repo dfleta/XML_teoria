@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ed:vuelo xmlns:ed="http://www.edreams.com"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.edreams.com  vueloSchema_ns_prefijo.xsd">
+	<billete id="333545000012">
+		<trayecto>
+			<origen WAC="PMI">Palma</origen>
+			<destino WAC="MAD">Madrid</destino>
+			<idayvuelta />
+
+			<!-- ida, vuelta e idayvuelta elementos opcionales pero al menos uno -->
+		</trayecto>
+		<fecha>
+			<salida>2005-10-26</salida>
+			<regreso>2005-10-30</regreso>
+			<!--regreso puede no ser obligatorio -->
+		</fecha>
+		<pasajeros>
+			<adultos>1</adultos>
+			<niños>1</niños>
+			<!-- bebes no viajan, elemento opcional -->
+		</pasajeros>
+		<clase>turista</clase>
+		<!-- turista barata, turista, business y primera posiles valores de una enumeración -->
+	</billete>
+</ed:vuelo>

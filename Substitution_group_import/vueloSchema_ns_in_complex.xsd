@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified"
+	elementFormDefault="unqualified"
+	targetNamespace="http://www.edreams.com"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:ed="http://www.edreams.com"
+	xmlns:pass="http://www.pasajerosAdultos/data.org">
+	
+	<xs:element name="adultos" type="ed:pasajerosAdultos"></xs:element>
+
+	<!-- grupo de sustitución:
+	- el elemento cabecera (adultos) debe ser global
+	- no todos los elementos del grupo de sustitución han de aparecer en la instancia XML
+	- los indicadores minOccurs y maxOccurs del elemento cabecera deben ser adecuados al número de elementos
+	  de sustitución que permitamos aparecer (pueden aparecer tantos como el valor maxOccurs del elemento cabecera)
+	- si maxOccurs así lo permite, puede aparecer el elemento cabecera y sus sustitutos
+	- es posible sustituir elementos/tipos definidos en otro espacio de nombres como
+	se ilustra en este ejemplo. -->
+	
+
+	<xs:complexType name="tipoPasajeros">
+		<xs:sequence>
+			<xs:element ref="pass:adultos" maxOccurs="1"></xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="niños"
+				type="ed:pasajerosMenores">
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="bebes"
+				type="ed:pasajerosMenores">
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:simpleType name="pasajerosAdultos">
+		<xs:restriction base="xs:integer">
+			<xs:minInclusive value="1"></xs:minInclusive>
+			<xs:maxInclusive value="9"></xs:maxInclusive>
+		</xs:restriction>
+	</xs:simpleType>
+
+
+	<xs:simpleType name="pasajerosMenores">
+		<xs:restriction base="xs:integer">
+			<xs:pattern value="[0-9]"></xs:pattern>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- tipo derivado: extensión de tipos complejos -->
+
+	<xs:complexType name="extTipoPasajeros">
+		<xs:complexContent>
+			<xs:extension base="ed:tipoPasajeros">
+				<xs:sequence>
+					<xs:element name="bichos" type="xs:integer"></xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+</xs:schema>

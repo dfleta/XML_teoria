@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified"
+	elementFormDefault="unqualified"
+	targetNamespace="http://www.edreams.com"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns="http://www.edreams.com">
+	
+	<!-- Utilizo un espacio de nombres implícito (sin prefijo) para edreams.com -->
+	
+	<xs:include schemaLocation="vueloSchema_ns_in_complex.xsd"/>
+
+	<xs:element name="vuelo"><!-- elemento global -->
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element maxOccurs="unbounded" name="billete"
+					type="tipoBillete">
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+
+	<!-- definición de tipos complejos -->
+
+
+	<xs:complexType name="tipoBillete">
+		<xs:sequence>
+			<xs:element name="trayecto" type="tipoTrayecto"></xs:element>
+			<!-- elementos locales -->
+			<xs:element name="fecha" type="tipoFecha"></xs:element>
+			<xs:element name="pasajeros" type="tipoPasajeros"></xs:element>
+			<xs:element name="clase" type="tipoClase" form="qualified"> 		<!-- elemento local cualificado -->
+			</xs:element>
+		</xs:sequence>
+		<!-- atributos de "billete", tras etiqueta "sequence" -->
+		<xs:attribute name="id" type="xs:unsignedLong" form="qualified">		<!-- atributo cualificado -->
+		</xs:attribute>
+	</xs:complexType>
+
+
+	<xs:complexType name="tipoTrayecto">
+		<xs:sequence>
+			<xs:element name="origen" type="xs:string"></xs:element>
+			<xs:element name="destino"><!-- elemento con contenido simple (string) y atributo -->
+				<xs:complexType>
+					<xs:simpleContent><!-- contenido simple -->
+						<xs:extension base="xs:string">
+							<xs:attribute name="did" type="xs:string"></xs:attribute>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:choice>
+				<xs:element name="ida"><!-- elemento vacío: es complejo -->
+					<xs:complexType></xs:complexType>
+				</xs:element>
+				<xs:element name="vuelta">
+					<xs:complexType></xs:complexType>
+				</xs:element>
+				<xs:element name="idayvuelta">
+					<xs:complexType></xs:complexType>
+				</xs:element>
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="tipoFecha">
+		<xs:sequence>
+			<xs:element name="salida" type="xs:date"></xs:element>
+			<xs:element minOccurs="0" name="regreso" type="xs:date"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+
+	<!-- definición de tipos simples -->
+
+	<xs:simpleType name="tipoClase">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="turista barata"></xs:enumeration>
+			<xs:enumeration value="turista"></xs:enumeration>
+			<xs:enumeration value="business"></xs:enumeration>
+			<xs:enumeration value="primera"></xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	
+
+</xs:schema>
