@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<!-- Ejemplo schema para instancia sin espacio de nombres.  
+	 El elemento schema no posee ahora definicion de espacio de nombres de la instancia XML 
+	 (ni el resto de atributos asociados) -->
 
 <xs:element name="vuelo">		<!-- elemento global -->
-	<xs:complexType>
+	<xs:complexType>			<!-- tipo anonimo: a evitar -->
 	  	<xs:sequence>
 		   	<xs:element maxOccurs="unbounded" name="billete" type="tipoBillete"></xs:element>
 	  	</xs:sequence>
@@ -15,7 +18,7 @@
 
 <xs:complexType name="tipoBillete">
 	<xs:sequence>
-		<xs:element name="trayectu" type="tipoTrayecto"></xs:element>	<!-- elementos locales -->	
+		<xs:element name="trayecto" type="tipoTrayecto"></xs:element>	<!-- elementos locales -->	
 		<xs:element name="fecha" type="tipoFecha"></xs:element>
 		<xs:element name="pasajeros" type="tipoPasajeros"></xs:element>
 		<xs:element name="clase" type="tipoClase"></xs:element>

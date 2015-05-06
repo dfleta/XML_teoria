@@ -8,15 +8,13 @@
 	<!-- Colección de tipos incluidos  -->
 
 	<xs:complexType name="tipoPasajeros">
-		<xs:sequence>
+        <xs:all>
 			<xs:element name="adultos" type="ed:pasajerosAdultos"></xs:element>
-			<xs:element maxOccurs="1" minOccurs="0" name="niños"	
-				type="ed:pasajerosMenores">
+			<xs:element maxOccurs="1" minOccurs="0" name="niños" type="ed:pasajerosMenores">
 			</xs:element>
-			<xs:element maxOccurs="1" minOccurs="0" name="bebes"
-				type="ed:pasajerosMenores">
+			<xs:element maxOccurs="1" minOccurs="0" name="bebes" type="ed:pasajerosMenores">
 			</xs:element>
-		</xs:sequence>
+		</xs:all>
 	</xs:complexType>
 
 	<xs:simpleType name="pasajerosAdultos">

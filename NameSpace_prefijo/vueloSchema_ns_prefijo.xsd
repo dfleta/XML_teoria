@@ -8,7 +8,7 @@
 
 
 	<xs:element name="vuelo"><!-- elemento global -->
-		<xs:complexType>  <!--  declaración de tipo anónimo -->
+		<xs:complexType>  <!--  declaración de tipo anónimo: a evitar -->
 			<xs:sequence>
 				<xs:element maxOccurs="unbounded" name="billete" type="ed:tipoBillete"></xs:element>
 				<!-- Debemos indicar el espacio de nombre del tipo del elemento billete -->
@@ -25,7 +25,7 @@
 			<xs:element name="trayecto" 	type="ed:tipoTrayecto"></xs:element>
 			<xs:element name="fecha" 		type="ed:tipoFecha"></xs:element>
 			<xs:element name="pasajeros" 	type="ed:tipoPasajeros"></xs:element>
-			<xs:element name="clase" 	type="ed:tipoClase"></xs:element>
+			<xs:element name="clase" 		type="ed:tipoClase"></xs:element>
 		</xs:sequence>
 		<!-- atributos de "billete", tras etiqueta "sequence" -->
 		<xs:attribute name="id" type="xs:unsignedLong"></xs:attribute>
@@ -108,6 +108,10 @@
 			<xs:pattern value="[0-9]"></xs:pattern>
 		</xs:restriction>
 	</xs:simpleType>
+
+	<!-- Es necesario mover a un fichero independiente (con el mismo o diferente espacio de nombres)
+		 el tipo simple WAC con los codigos de los aeropuertos en aras de la modularidad y mantenimiento del codigo.
+		 Ver el ejemplo "incllude" -->
 
 	<xs:simpleType name="WAC">  <!--  Tipo reutilizado -->
 		<xs:restriction base="xs:string">
