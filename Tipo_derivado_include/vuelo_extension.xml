@@ -26,7 +26,7 @@
 			<!-- elemento añadido a la definición de tipoPasajeros -->
 			<bicicleta>1</bicicleta>
 		</pasajeros>
-		
+		<!-- elemento local cualificado -->
 		<ed:clase>turista</ed:clase>
 		
 		<!-- turista barata, turista, business y primera posibles valores de una enumeración -->

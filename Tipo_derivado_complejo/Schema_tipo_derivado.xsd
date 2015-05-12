@@ -110,6 +110,15 @@
 	<!-- tipo derivado: extensión de tipos complejos -->
 
 	<xs:complexType name="extTipoPasajeros">
+	 	<xs:annotation>
+       		<xs:documentation>
+       		Derivación de tipos complejos por extensión.
+       		Cuando un elemento complejo se deriva por extensión, 
+       		su modelo de contenido efectivo es el modelo de contenido del tipo base 
+       		añadiéndole el modelo de contenido especificado en la derivación del tipo. 
+       		En este caso, la extensión añade un elemento hijo "bichos" en un grupo secuencial.
+       		</xs:documentation>
+      	</xs:annotation>
 		<xs:complexContent>
 			<xs:extension base="tipoPasajeros">
 				<xs:sequence>

@@ -15,13 +15,20 @@
 			<regreso>2005-10-30</regreso>
 			<!--regreso puede no ser obligatorio -->
 		</fecha>
+		
+		<!--  Para identificar exactamente qué tipo derivado se pretende utilizar, 
+		el tipo derivado debe ser identificado en el documento instancia. 
+		El tipo se identifica utilizando el atributo xsi:type 
+		que es parte del espacio de nombres de la instancia del Esquema XML.  --> 
+		
 		<pasajeros xsi:type="ed:extTipoPasajeros">
 			<adultos>1</adultos>
 			<niños>1</niños>
 			<!-- bebes no viajan, elemento opcional -->
+			<!-- Elemento bichos añadido por la extensión del tipoPasajeros -->"
 			<bichos>1</bichos>
 		</pasajeros>
-		
+		<!-- elemento local cualificado -->
 		<ed:clase>turista</ed:clase>
 		
 		<!-- turista barata, turista, business y primera posibles valores de una enumeración -->
