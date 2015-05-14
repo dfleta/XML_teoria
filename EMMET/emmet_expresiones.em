@@ -72,9 +72,8 @@ Expresiones Emmet
 	vuelo>billete*3>trayecto>origen+destino+idayvuelta^fecha>salida+regreso^pasajeros>adultos+ninhos>clase
 
 	genera billete * 3
-
-
-### Operador CLIMB-UP ^  n-veces:
+	
+## Operador CLIMB-UP ^  n-veces: 
 
 	xs:schema>xs:element>xs:complextype>xs:sequence>xs:element*4^^^xs:element
 
@@ -93,14 +92,14 @@ Expresiones Emmet
 	</xs:schema>
 
 
-### Igual a la anterior pero con grouping ( )
+## Igual a la anterior pero con grouping ( )
 
 	xs:schema>(xs:element>xs:complextype>xs:sequence>xs:element*4)+xs:element
 
 
 ## ATRIBUTE OPERATORS
 
-### CUSTOM ATTRIBUTES [ atrib = "valor" * n ]
+	## CUSTOM ATTRIBUTES [ atrib = "valor" * n ]
 
 	vuelo>billete[WAC]
 
@@ -109,7 +108,7 @@ Expresiones Emmet
 	</vuelo>
 
 
-###	ID and CLASS
+	## ID and CLASS
 
 	div#contenedor>h1>ul>li.listitem*4
 
@@ -131,7 +130,7 @@ Expresiones Emmet
 	<div id="footer" class="class1 class2 class3"></div>
 
 
-##	Item numbering: $  		=> afecta al elemento que acompaña:
+	## Item numbering: $  		=> afecta al elemento que acompaña:
 
 	div#contenedor>h1>ul>li.listitem$*4
 
@@ -146,7 +145,7 @@ Expresiones Emmet
 		</h1>
 	</div>
 
-### Dos o tres dígitos:  $$$
+	## Dos o tres dígitos:  $$$
 
 	div#contenedor>h1>ul>li.listitem$$$*4
 
@@ -161,7 +160,7 @@ Expresiones Emmet
 		</h1>
 	</div>
 
-### @- para cambiar el orden (sort) => add @- after $:
+	## @- para cambiar el orden (sort) => add @- after $:
 
 	div#contenedor>h1>ul>li.listitem$@-*4
 
