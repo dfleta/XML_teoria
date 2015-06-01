@@ -25,12 +25,6 @@
     <union memberTypes="kml:longitudeList kml:latitudeList kml:altitudeList"/>
 </simpleType>
 
-<simpleType name="longitudeItem">
- <restriction base="kml:longitudeList">
-  <length value="1"/>
- </restriction>
-</simpleType>  
-
 <simpleType name="longitudeList">
  <list itemType="kml:longitude"/>
 </simpleType>
@@ -42,12 +36,6 @@
  </restriction>
 </simpleType>
 
-<simpleType name="latitudeItem">
- <restriction base="kml:latitudeList">
-  <length value="1"/>
- </restriction>
-</simpleType>
-
 <simpleType name="latitudeList">
  <list itemType="kml:latitude"/>
 </simpleType>
@@ -56,12 +44,6 @@
  <restriction base="float">
  	<maxInclusive value="90"/>
  	<minInclusive value="-90"/>
- </restriction>
-</simpleType>
-
-<simpleType name="altitudeItem">
- <restriction base="kml:altitudeList">
-  <length value="1"/>
  </restriction>
 </simpleType>
 
