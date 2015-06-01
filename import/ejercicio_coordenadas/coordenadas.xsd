@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema"
   xmlns:kml="http://www.opengis.net/kml/2.2"
-  xmlns:atom="http://www.w3.org/2005/Atom"
-  xmlns:xal="urn:oasis:names:tc:ciq:xsdschema:xAL:2.0"
   targetNamespace="http://www.opengis.net/kml/2.2"
   elementFormDefault="qualified"
   version="2.2.0">
@@ -11,26 +9,13 @@
 Una única tupla formada por valores de puntos flotantes para la longitud, la latitud y la altitud (en este orden). Los valores de longitud y latitud se expresan en grados, donde los valores
 longitude ≥ −180 y <= 180,
 latitude ≥ −90 y ≤ 90,
-altitude (opcional), se expresan en metros por encima del nivel del mar.
-No se deben incluir espacios entre los tres valores que describen una coordenada.  -->
+altitude (opcional), se expresan en metros por encima del nivel del mar.-->
 
 <element name="coordinates" type="kml:coordinatesType"/>
 
-<!--  <simpleType name="coordinatesType">
-	<restriction base="kml:coordinatesUnion">
-		<Lenght value="3"/>
-	</restriction>
-</simpleType>  -->
-
 <simpleType name="coordinatesType">
-    <union memberTypes="kml:longitudeList kml:latitudeList kml:altitudeList"/>
+    <union memberTypes="kml:latitudeList kml:altitudeList kml:longitudeList"/>
 </simpleType>
-
-<simpleType name="longitudeItem">
- <restriction base="kml:longitudeList">
-  <length value="1"/>
- </restriction>
-</simpleType>  
 
 <simpleType name="longitudeList">
  <list itemType="kml:longitude"/>
@@ -43,12 +28,6 @@ No se deben incluir espacios entre los tres valores que describen una coordenada
  </restriction>
 </simpleType>
 
-<simpleType name="latitudeItem">
- <restriction base="kml:latitudeList">
-  <length value="1"/>
- </restriction>
-</simpleType>
-
 <simpleType name="latitudeList">
  <list itemType="kml:latitude"/>
 </simpleType>
@@ -57,12 +36,6 @@ No se deben incluir espacios entre los tres valores que describen una coordenada
  <restriction base="float">
  	<maxInclusive value="90"/>
  	<minInclusive value="-90"/>
- </restriction>
-</simpleType>
-
-<simpleType name="altitudeItem">
- <restriction base="kml:altitudeList">
-  <length value="1"/>
  </restriction>
 </simpleType>
 

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
   <coordinates
-      xmlns="http://www.opengis.net/kml/2.2"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://www.opengis.net/kml/2.2  ogckml22.xsd"
-      >-98.5678 45.5678 9</coordinates>
+      	xmlns="http://www.opengis.net/kml/2.2"
+  		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  		xsi:schemaLocation="http://www.opengis.net/kml/2.2  coordenadas.xsd"
+      >39.35 2.39 0</coordinates>
 

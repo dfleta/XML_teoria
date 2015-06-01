@@ -16,16 +16,21 @@
 			<!--regreso puede no ser obligatorio -->
 		</fecha>
 		<pasajeros xsi:type="ed:extTipoPasajerosBultos">
+		    
 		    <!-- El validador espera un elemento del tipo tipoPasajeros.
 		    Mediante la etiqueta xsi:type indicamos el tipo derivado COMPLEJO de tipoPasajeros
 		    contra el que validar.
 		    Es necesario indicar el espacio de nombres al que pertenece el tipo de dato.
 		    Este procedimiento no es necesario al trabajar con tipos derivados SIMPLES.  -->
+			
 			<adultos>1</adultos>
 			<niños>1</niños>
+			
 			<!-- elemento añadido a la definición de tipoPasajeros -->
 			<bicicleta>1</bicicleta>
+		
 		</pasajeros>
+		
 		<!-- elemento local cualificado -->
 		<ed:clase>turista</ed:clase>
 		
