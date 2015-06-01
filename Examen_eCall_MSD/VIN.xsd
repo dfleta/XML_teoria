@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema 
+		xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+		targetNamespace="http://www.iso_3779.org/VIN"
+		xmlns:vin="http://www.iso_3779.org/VIN" 
+		elementFormDefault="unqualified">
+
+	<xs:element name="VIN" type="vin:tVIN"/>
+	
+	<xs:complexType name="tVIN">
+			<xs:sequence>
+				<xs:element name="WMI" type="vin:tWMI"></xs:element>
+				<xs:element name="VDS" type="vin:tVDS"></xs:element>
+				<xs:element name="VIS" type="vin:tVIS"></xs:element>
+			</xs:sequence>
+	</xs:complexType>
+
+	<xs:simpleType name="tWMI">
+		<xs:annotation>
+			<xs:documentation>
+				http://es.wikipedia.org/wiki/N%C3%BAmero_de_chasis 
+				Primer carácter: [1239JKSWYZML] o V[S-W]
+				Segundo carácter: [ABCDFGHLMNPSTV] o [2-8]
+				Tercer carácter:  un único carácter en mayúscula (cualquiera)
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="([1239]|[JKSWYZML]|(V[S-W])){1}([ABCDFGHLMNPSTV]|[2-8]){1}[A-Z]"></xs:pattern>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="tVDS">
+		<xs:annotation>
+			<xs:documentation>
+				Cuarto a octavo carácter: características vehículo
+				Noveno carácter: un carácter mayúscula resultado de un cálculo, omitiendo I,O,Q y Ñ
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="([aA-zZ]{4})([^IOQÑ\.\d\s]{1})"></xs:pattern>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="tVIS">
+		<xs:annotation>
+			<xs:documentation>
+				La décima posición del código de identificación de vehículos nos indica el año del modelo. 
+				Si el vehículo fue producido entre 1980 y 2000 o entre 2010 y 2030 se identifica con una letra, 
+				pero si fue manufacturado entre 2001 y 2009 o entre 2031 y 2039 se identificará con un número;
+				decimoprimera posición indica el número de la planta en donde fue ensamblado el vehículo.
+				duodécima posición a la decimoséptima: indica en números correlativos la secuencia en la línea de producción del vehículo de acuerdo al fabricante.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="([A-Z]|[1-9])\d{1}\d{6}"></xs:pattern>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	
+
+</xs:schema>

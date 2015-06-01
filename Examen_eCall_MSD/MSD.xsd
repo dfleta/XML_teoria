@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema 
+		xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+		targetNamespace="http://www.eCall.org/MSD"
+		xmlns:msd="http://www.eCall.org/MSD" 
+		xmlns:kml="http://www.opengis.net/kml/2.2"
+		elementFormDefault="unqualified">
+
+	<xs:include schemaLocation="tipo_derivado_VIN.xsd"></xs:include>
+	
+	<xs:import namespace="http://www.opengis.net/kml/2.2" schemaLocation="coordenadas.xsd"/>
+	
+
+	<xs:element name="MSD" type="msd:tMSD"/>
+	
+	<xs:complexType name="tMSD">
+		<xs:sequence>
+			<xs:element name="message_ID" 						type="msd:tMessageID"/>
+			<xs:element name="vehicle_identification" 			type="msd:tVehicle_Identification"/>
+			<xs:element name="time_stamp" 						type="msd:tTime_Stamp"/>
+			<xs:element name="vehicle_location_and_direction" 	type="msd:tLocation"/>
+			<xs:element name="format_field" 					type="msd:tFormat_Field"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<!-- tMessageID -->
+
+			<xs:complexType name="tMessageID">
+				<xs:sequence>
+					<xs:element name="control" 				type="msd:tControl"/>
+					<xs:element name="call_type" 			type="msd:tCall_Type"/>
+					<xs:element name="position_confidence" 	type="msd:tPosition_Confidence"/>
+					<xs:element name="vehicle_type" 		type="msd:tVehicle_Type"/>
+				</xs:sequence>
+			<xs:attribute name="format_version" 		type="xs:anySimpleType"/>
+			<xs:attribute name="message_identifier" 	type="xs:positiveInteger" 	default="1"/>
+			</xs:complexType>
+			
+			<!-- tipos simples -->
+				
+			<xs:simpleType name="tControl">
+				<xs:restriction base="xs:nonNegativeInteger">
+					<xs:maxInclusive value="1"/>
+				</xs:restriction>
+			</xs:simpleType>
+		
+			<xs:simpleType name="tCall_Type">
+				<xs:restriction base="xs:nonNegativeInteger">
+					<xs:maxInclusive value="1"/>
+				</xs:restriction>
+			</xs:simpleType>
+			
+			<xs:simpleType name="tPosition_Confidence">
+				<xs:restriction base="xs:nonNegativeInteger">
+					<xs:maxInclusive value="1"/>
+				</xs:restriction>
+			</xs:simpleType>
+			
+			<xs:simpleType name="tVehicle_Type">
+				<xs:restriction base="xs:nonNegativeInteger">
+					<xs:pattern value="[01]{4}"></xs:pattern>
+				</xs:restriction>
+			</xs:simpleType>
+	
+	
+	<!-- tipo derivado VIN en otro fichero schema INCLUIDO para facilitar modularidad, mantenimiento  -->
+	
+	
+	<!-- tipo Fecha -->
+	
+	<xs:simpleType name="tTime_Stamp">
+		<xs:annotation>
+			<xs:documentation>
+				La especificación del tipo Time Stamp de la forma: January 1st 1970 UTC
+				no resulta óptima. Debería consistir en un elemento complejo con 4 elementos hijos
+				para poder validar los 4 valores.
+				Si construimos una unión de cuatro tipos: mes, día, año y estándar de tiempo,
+				encontraremos el mismo problema que en coordenadas: no podremos evitar la ocurrencia de más
+				de un elemento mes, día, año, etc.
+				Para simplificar, vamos a indicar tomar la representación léxica del tipo de dato xs:date builtin
+				de XML Schema:
+				 				"to indicate May the 31st, 1999, one would write: 1999-05-31."
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:date"/>
+	</xs:simpleType>
+	
+	
+	<!-- tipo Vehicle Location and Direction-->
+	
+	<xs:simpleType name="tLocation">
+		<xs:annotation>
+				<xs:documentation>
+					Reutilizando el tipo coordinatesType del espacio de nombres KML
+					no es posible validar sólo dos valores uno a cada tipo de la unión.
+				</xs:documentation>
+			</xs:annotation>
+		<xs:union memberTypes="kml:longitudeList kml:latitudeList"/>
+	</xs:simpleType>
+
+
+	<!-- tipo Format_Field -->
+
+	<xs:complexType name="tFormat_Field">
+		<xs:sequence>
+			<xs:element name="format" 				type="msd:tFormat"/>
+			<xs:element name="aditional_data" 		type="xs:anySimpleType"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:simpleType name="tFormat">
+		<xs:restriction base="xs:nonNegativeInteger">
+			<xs:maxInclusive value="6"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	
+	
+</xs:schema>

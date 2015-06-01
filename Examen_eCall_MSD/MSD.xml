@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<msd:MSD 
+	xmlns:msd="http://www.eCall.org/MSD"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.eCall.org/MSD MSD.xsd">
+	
+	<message_ID format_version="10245BBCC" message_identifier="2">
+		<control>0</control>
+		<call_type>1</call_type>
+		<position_confidence>1</position_confidence>
+		<vehicle_type>1011</vehicle_type>
+	</message_ID>
+	
+	<vehicle_identification>
+		<WMI>VSAA</WMI>
+		<VDS>ASdjT</VDS>
+		<VIS>91123456</VIS>
+		<VPST>diesel tank</VPST>
+	</vehicle_identification>
+
+	<time_stamp>1970-01-01</time_stamp>
+
+	<vehicle_location_and_direction>-98.5678 45.5678</vehicle_location_and_direction>
+
+	<format_field>
+		<format>6</format>
+		<aditional_data> datos </aditional_data>
+	</format_field>
+	
+</msd:MSD>

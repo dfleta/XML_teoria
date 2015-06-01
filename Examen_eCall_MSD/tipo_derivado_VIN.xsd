@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema 
+		xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+		targetNamespace="http://www.eCall.org/MSD"
+		xmlns:msd="http://www.eCall.org/MSD" 
+		xmlns:vin="http://www.iso_3779.org/VIN"
+		elementFormDefault="unqualified">
+	
+	<xs:import namespace="http://www.iso_3779.org/VIN" schemaLocation="VIN.xsd"/>
+	
+	<xs:complexType name="tVehicle_Identification">
+		<xs:complexContent>
+			<xs:extension base="vin:tVIN">
+				<xs:sequence>
+					<xs:element name="VPST" type="msd:VPST"></xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:simpleType name="VPST">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="hydrogen"></xs:enumeration>
+			<xs:enumeration value="electric"></xs:enumeration>
+			<xs:enumeration value="liquid propane gas"></xs:enumeration>
+			<xs:enumeration value="compressed natural gas"></xs:enumeration>
+			<xs:enumeration value="CNG"></xs:enumeration>
+			<xs:enumeration value="diesel tank"></xs:enumeration>
+			<xs:enumeration value="gasoline tank"></xs:enumeration>			
+		</xs:restriction>
+	</xs:simpleType>
+	
+</xs:schema>

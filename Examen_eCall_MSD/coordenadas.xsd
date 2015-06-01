@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+  xmlns:kml="http://www.opengis.net/kml/2.2"
+  targetNamespace="http://www.opengis.net/kml/2.2"
+  elementFormDefault="qualified"
+  version="2.2.0">
+
+<!-- -->
+
+<element name="coordinates" type="kml:coordinatesType"/>
+
+<simpleType name="coordinatesType">
+	<annotation>
+		<documentation>
+			 ""coordinates"" (obligatorio)
+			Una única tupla formada por valores de puntos flotantes para la longitud, la latitud y la altitud 
+			(en este orden). 
+			Los valores de longitud y latitud se expresan en grados, donde los valores
+			longitude ge −180 y le 180,
+			latitude  ge −90 y le 90,
+			altitude (opcional), 
+			se expresan en metros por encima del nivel del mar.
+		</documentation>
+	</annotation>
+    <union memberTypes="kml:longitudeList kml:latitudeList kml:altitudeList"/>
+</simpleType>
+
+<simpleType name="longitudeItem">
+ <restriction base="kml:longitudeList">
+  <length value="1"/>
+ </restriction>
+</simpleType>  
+
+<simpleType name="longitudeList">
+ <list itemType="kml:longitude"/>
+</simpleType>
+
+<simpleType name="longitude">
+ <restriction base="float">
+ 	<maxInclusive value="180"/>
+ 	<minInclusive value="-180"/>
+ </restriction>
+</simpleType>
+
+<simpleType name="latitudeItem">
+ <restriction base="kml:latitudeList">
+  <length value="1"/>
+ </restriction>
+</simpleType>
+
+<simpleType name="latitudeList">
+ <list itemType="kml:latitude"/>
+</simpleType>
+
+<simpleType name="latitude">
+ <restriction base="float">
+ 	<maxInclusive value="90"/>
+ 	<minInclusive value="-90"/>
+ </restriction>
+</simpleType>
+
+<simpleType name="altitudeItem">
+ <restriction base="kml:altitudeList">
+  <length value="1"/>
+ </restriction>
+</simpleType>
+
+<simpleType name="altitudeList">
+ <list itemType="kml:altitude"/>
+</simpleType>
+
+<simpleType name="altitude">
+ <restriction base="positiveInteger">
+ </restriction>
+</simpleType>
+
+</schema>

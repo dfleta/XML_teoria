@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vin:VIN xmlns:vin="http://www.iso_3779.org/VIN"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.iso_3779.org/VIN VIN.xsd">
+	<WMI>VSAA</WMI>
+	<VDS>ASdjT</VDS>
+	<VIS>91123456</VIS>
+</vin:VIN>
