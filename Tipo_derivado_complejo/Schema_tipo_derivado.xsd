@@ -3,7 +3,8 @@
 	elementFormDefault="unqualified"
 	targetNamespace="http://www.edreams.com"
 	xmlns:xs="http://www.w3.org/2001/XMLSchema"
-	xmlns="http://www.edreams.com">
+	xmlns="http://www.edreams.com"
+	xml:lang="es">
 
 	<xs:element name="vuelo"><!-- elemento global -->
 		<xs:complexType>
@@ -111,7 +112,7 @@
 
 	<xs:complexType name="extTipoPasajeros">
 	 	<xs:annotation>
-       		<xs:documentation>
+       		<xs:documentation xml:lang="es">
        		Derivación de tipos complejos por extensión.
        		Cuando un elemento complejo se deriva por extensión, 
        		su modelo de contenido efectivo es el modelo de contenido del tipo base 

@@ -3,13 +3,35 @@
 	elementFormDefault="unqualified"
 	targetNamespace="http://www.edreams.com"
 	xmlns:xs="http://www.w3.org/2001/XMLSchema"
-	xmlns:ed="http://www.edreams.com">
-
+	xmlns:ed="http://www.edreams.com"
+	xml:lang="es">
+	
 	<!-- redefinir un tipo de dato incluido desde otro Schema-->
+
+	<xs:annotation>
+		<xs:documentation xml:lang="es">
+			Al igual que el mecanismo include, redefine requiere que los componentes externos 
+			estén en el mismo espacio de nombres que el esquema que los va a redefinir, 
+			aunque los componentes externos que no tienen espacio de nombres alguno, 
+			también pueden ser redefinidos. 
+			En éste último caso, los componentes externos redefinidos se hacen parte
+			del espacio de nombres del esquema que los redefine.
+			
+			El elemento redefine actúa de forma muy parecida al elemento include
+			ya que incluye todas las declaraciones y definiciones del schema incluido.
+			
+		</xs:documentation>
+	</xs:annotation>
 	
 	<xs:redefine schemaLocation="vueloSchema_ns_in_complex.xsd">
-
-	 <xs:complexType name="tipoPasajeros">
+		 <xs:complexType name="tipoPasajeros">
+		 <xs:annotation>
+			<xs:documentation xml:lang="es">
+				Fuera del elemento redefine, cualquier intento de definir un tipo complejo con el mismo nombre
+		 		(y el mismo espacio de nombres) como el tipo base del que está siendo derivado, 
+		 		causa un error. 
+			</xs:documentation>
+		</xs:annotation>
 		<xs:complexContent>
 			<xs:extension base="ed:tipoPasajeros">
 				<xs:sequence>
@@ -22,7 +44,7 @@
 	</xs:redefine>
 
 
-	<xs:element name="vuelo"><!-- elemento global -->
+	<xs:element name="vuelo"> <!-- elemento global -->
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element maxOccurs="unbounded" name="billete"

@@ -7,9 +7,14 @@
 
 	<xs:complexType name="tipoPasajeros">
 		<xs:sequence>
-			<xs:element ref="ed:adultos" maxOccurs="3"></xs:element>
-			<!-- "adultos" elemento a substituir. Es un elemento global, así que lo referencio
-			dentro de un tipo para poder especificar los atributos maxOccurs y minOccurs  -->
+			<xs:element ref="ed:adultos" maxOccurs="3">
+				<xs:annotation>
+					<xs:documentation>
+					"adultos" elemento a substituir. Es un elemento global, así que lo referencio
+					dentro de un tipo para poder especificar los atributos maxOccurs y minOccurs  -
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
 			<xs:element maxOccurs="1" minOccurs="0" name="niños"
 				type="ed:pasajerosMenores">
 			</xs:element>
@@ -47,18 +52,39 @@
 	
 	<!--  grupo de substitución -->
 	
-	<xs:element name="adultos" type="ed:pasajerosAdultos"></xs:element>
-	<!-- Utilizamos el elemento "adultos" como cabecera de un grupo de substitución.
-	El elemento podrá ser substituido por el grupo declarado a continuación.  -->
+	<xs:element name="adultos" type="ed:pasajerosAdultos">
+		<xs:annotation>
+			<xs:documentation>
+				Utilizamos el elemento "adultos" como cabecera de un grupo de substitución.
+				Debe ser global
+				El elemento podrá ser substituido por el grupo declarado a continuación.  
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
 	
 	<xs:element name="jubilados" type="ed:pasajerosAdultos" substitutionGroup="ed:adultos"/>
-	<xs:element name="estudiantes" type="ed:pasajerosAdultos" substitutionGroup="ed:adultos"/>
+	<xs:element name="estudiantes" type="ed:pasajerosAdultos" substitutionGroup="ed:adultos">
+		<xs:annotation>
+			<xs:documentation>
+				Los elementos de los grupos de sustitución deben tener el mismo tipo que el elemento cabecera, 
+				o pueden tener un tipo que haya sido derivado del tipo del elemento cabecera.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
 	
-	<!-- grupo de sustitución:
-	- el elemento cabecera (adultos) debe ser global
-	- no todos los elementos del grupo de sustitución han de aparecer en la instancia XML
-	- los indicadores minOccurs y maxOccurs del elemento cabecera deben ser adecuados al número de elementos
-	  de sustitución que permitamos aparecer (pueden aparecer tantos como el valor maxOccurs del elemento cabecera)
-	- si maxOccurs así lo permite, puede aparecer el elemento cabecera y sus sustitutos -->
+	<xs:annotation>
+		<xs:documentation>
+		grupo de sustitución:
+		- El elemento cabecera (adultos) debe ser global.
+		- No todos los elementos del grupo de sustitución han de aparecer en la instancia XML.
+		- Los indicadores minOccurs y maxOccurs del elemento cabecera deben ser adecuados al número de elementos
+		  de sustitución que permitamos aparecer (pueden aparecer tantos como el valor maxOccurs del elemento cabecera).
+		- Si maxOccurs así lo permite, puede aparecer el elemento cabecera junto a sus sustitutos.
+		- La existencia de un grupo de sustitución no requiere que ninguno de los elementos de la clase sea utilizado, 
+		  ni excluye el uso de un elemento cabecera. 
+		- Los elementos de los grupos de sustitución deben tener el mismo tipo que el elemento cabecera, 
+		  o pueden tener un tipo que haya sido derivado del tipo del elemento cabecera.
+		</xs:documentation>
+	</xs:annotation>
 
 </xs:schema>

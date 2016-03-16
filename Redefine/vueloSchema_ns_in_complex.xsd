@@ -28,9 +28,16 @@
 		</xs:restriction>
 	</xs:simpleType>
 
-	<!-- tipo derivado: extensión de tipos complejos -->
+	<!-- -->
 
 	<xs:complexType name="extTipoPasajeros">
+		<xs:annotation>
+			<xs:documentation>
+			tipo derivado: extensión de tipos complejos 
+			Como el tipo base tipoPasajeros está refedinido, ahora bichos se añade
+			a instrumentos (elemento que hemos añadido en la redefición).
+			</xs:documentation>
+		</xs:annotation>
 		<xs:complexContent>
 			<xs:extension base="ed:tipoPasajeros">
 				<xs:sequence>
